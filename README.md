@@ -15,8 +15,9 @@ To get a local copy up and running, follow these simple steps:
    git clone https://github.com/devstromo/android-kotlin-openai.git
    ```
 2. Open the project in Android Studio or your preferred IDE.
-3. Obtain an API key from OpenAI and configure it according to the project's documentation.
-4. Explore the example, run the application, and see OpenAI integration in action.
+3. Rename ```key.sample.properties``` file to ```key.properties```
+4. Obtain an API key from OpenAI and add it to ```OPENAI_API_KEY``` value in the ```key.properties```.
+5. Explore the example, run the application, and see OpenAI integration in action.
 
 ## 🤝 Contributing
 
