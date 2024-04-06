@@ -39,3 +39,9 @@ We warmly welcome contributions from everyone who is eager to help improve this 
 6. **Submit a pull request** - Go to the original project on GitHub, and you'll see a prompt to submit a pull request from your new branch.
 
 Before submitting your pull request, please make sure your changes adhere to the project guidelines and that you've tested your changes thoroughly.
+
+## 📄 License
+
+This project is open-sourced under the MIT License. This license permits unrestricted use, distribution, modification, and private or commercial exploitation, provided that the original copyright and permission notice are included in all copies or substantial portions of the software.
+
+For more details, see the [LICENSE](LICENSE) file in this repository.
