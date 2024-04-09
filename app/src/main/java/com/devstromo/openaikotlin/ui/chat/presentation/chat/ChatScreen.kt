@@ -1,6 +1,7 @@
 package com.devstromo.openaikotlin.ui.chat.presentation.chat
 
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -16,8 +17,12 @@ fun ChatScreen(
         mutableStateOf("A brown fox on the ground")
     }
 
-    Text(
-        text = "Image Prompt $prompt!",
+    Column(
         modifier = modifier
-    )
+    ) {
+        Text(
+            text = "Image Prompt $prompt!",
+        )
+    }
+
 }
