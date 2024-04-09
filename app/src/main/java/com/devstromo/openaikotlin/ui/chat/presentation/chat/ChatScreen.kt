@@ -35,6 +35,7 @@ fun ChatScreen(
 
     Column(
         modifier = modifier
+            .padding(10.dp)
     ) {
         Text(
             text = "Image Prompt $prompt!",
@@ -68,7 +69,7 @@ fun ChatInput(
         Icon(
             modifier = Modifier
                 .weight(0.2f)
-                .size(30.dp),
+                .size(20.dp),
             painter = painterResource(id = R.drawable.ic_send),
             contentDescription = "send icon"
         )
