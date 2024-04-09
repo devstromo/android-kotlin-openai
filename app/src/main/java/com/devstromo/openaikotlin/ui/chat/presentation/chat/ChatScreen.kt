@@ -2,16 +2,15 @@ package com.devstromo.openaikotlin.ui.chat.presentation.chat
 
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -20,8 +19,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -55,39 +56,42 @@ fun ChatScreen(
 fun ChatInput(
     modifier: Modifier = Modifier
 ) {
-    val message = rememberSaveable {
-        mutableStateOf("")
-    }
+    var message by rememberSaveable { mutableStateOf("") }
 
     val keyboardController = LocalSoftwareKeyboardController.current
     Row(
         modifier = modifier
-            .height(50.dp)
             .fillMaxWidth()
             .background(
-                color = kLightGrey,
+                color = Color.Transparent,
                 shape = ShapeDefaults.ExtraLarge
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        TextField(
-            value = message.value,
-            onValueChange = { message.value = it },
-            modifier = Modifier.weight(1f),
-            placeholder = {
-                Text(text = "Type input")
+        OutlinedTextField(
+            value = message,
+            onValueChange = { message = it },
+            modifier = Modifier
+                .weight(1f),
+//            placeholder = {
+////                if (message.isBlank()) {
+////                    Text(text = "Type input")
+////                }
+//            },
+            trailingIcon = {
+                IconButton(onClick = {
+                    message = ""
+                    keyboardController?.hide()
+                }) {
+                    Icon(
+                        modifier = Modifier
+                            .size(20.dp),
+                        painter = painterResource(id = R.drawable.ic_send),
+                        contentDescription = "send icon"
+                    )
+                }
             }
         )
-        IconButton(onClick = {
-            keyboardController?.hide()
-        }) {
-            Icon(
-                modifier = Modifier
-                    .size(20.dp),
-                painter = painterResource(id = R.drawable.ic_send),
-                contentDescription = "send icon"
-            )
-        }
     }
 }
 
