@@ -76,6 +76,7 @@ dependencies {
     implementation(platform(libs.openai.client.bom))
     implementation(libs.openai.client)
     runtimeOnly(libs.ktor.engine)
+    implementation(libs.androidx.ui.text.google.fonts)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

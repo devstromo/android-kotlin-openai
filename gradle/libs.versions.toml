@@ -9,6 +9,7 @@ lifecycleRuntimeKtx = "2.7.0"
 activityCompose = "1.8.2"
 composeBom = "2024.04.00"
 openaiClientBom = "3.7.1"
+uiTextGoogleFonts = "1.7.0-alpha05"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +29,7 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 openai-client-bom = { group = "com.aallam.openai", name = "openai-client-bom", version.ref = "openaiClientBom" }
 openai-client = { group = "com.aallam.openai", name = "openai-client" }
 ktor-engine= { group = "io.ktor", name = "ktor-client-okhttp" }
+androidx-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "uiTextGoogleFonts" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
