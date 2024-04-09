@@ -72,5 +72,4 @@ private fun ChatScreenPreview() {
             modifier = Modifier.fillMaxSize()
         )
     }
-
 }
