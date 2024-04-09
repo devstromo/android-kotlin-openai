@@ -2,6 +2,7 @@ package com.devstromo.openaikotlin.ui.chat.presentation.chat
 
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,14 +11,18 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -50,6 +55,11 @@ fun ChatScreen(
 fun ChatInput(
     modifier: Modifier = Modifier
 ) {
+    val message = rememberSaveable {
+        mutableStateOf("")
+    }
+
+    val keyboardController = LocalSoftwareKeyboardController.current
     Row(
         modifier = modifier
             .height(50.dp)
@@ -60,19 +70,24 @@ fun ChatInput(
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            modifier = Modifier
-                .weight(0.8f)
-                .padding(start = 20.dp),
-            text = "Type input",
+        TextField(
+            value = message.value,
+            onValueChange = { message.value = it },
+            modifier = Modifier.weight(1f),
+            placeholder = {
+                Text(text = "Type input")
+            }
         )
-        Icon(
-            modifier = Modifier
-                .weight(0.2f)
-                .size(20.dp),
-            painter = painterResource(id = R.drawable.ic_send),
-            contentDescription = "send icon"
-        )
+        IconButton(onClick = {
+            keyboardController?.hide()
+        }) {
+            Icon(
+                modifier = Modifier
+                    .size(20.dp),
+                painter = painterResource(id = R.drawable.ic_send),
+                contentDescription = "send icon"
+            )
+        }
     }
 }
 
