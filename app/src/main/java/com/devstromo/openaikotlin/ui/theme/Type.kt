@@ -15,30 +15,39 @@ val provider = GoogleFont.Provider(
     certificates = R.array.com_google_android_gms_fonts_certs
 )
 
-val fontName = GoogleFont("Raleway")
+val fontTitleName = GoogleFont("Raleway")
 
-val fontFamily = FontFamily(
-    Font(googleFont = fontName, fontProvider = provider),
-    Font(googleFont = fontName, fontProvider = provider, weight = FontWeight.Medium),
-    Font(googleFont = fontName, fontProvider = provider, weight = FontWeight.Bold)
+val fontTitleFamily = FontFamily(
+    Font(googleFont = fontTitleName, fontProvider = provider),
+    Font(googleFont = fontTitleName, fontProvider = provider, weight = FontWeight.Medium),
+    Font(googleFont = fontTitleName, fontProvider = provider, weight = FontWeight.Bold)
 )
+
+val fontBodyName = GoogleFont("Cabin")
+
+val fontBodyFamily = FontFamily(
+    Font(googleFont = fontBodyName, fontProvider = provider),
+    Font(googleFont = fontBodyName, fontProvider = provider, weight = FontWeight.Medium),
+    Font(googleFont = fontBodyName, fontProvider = provider, weight = FontWeight.Bold)
+)
+
 
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = fontFamily,
+        fontFamily = fontBodyFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
+    ),
     titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = fontTitleFamily,
         fontWeight = FontWeight.Normal,
         fontSize = 22.sp,
         lineHeight = 28.sp,
         letterSpacing = 0.sp
     ),
+    /*
     labelSmall = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Medium,
