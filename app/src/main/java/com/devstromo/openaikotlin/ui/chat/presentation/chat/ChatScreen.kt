@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -29,7 +29,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.devstromo.openaikotlin.R
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
-import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
 @Composable
 fun ChatScreen(
@@ -50,7 +49,6 @@ fun ChatScreen(
     }
 
 }
-
 
 @Composable
 fun ChatInput(
@@ -73,11 +71,6 @@ fun ChatInput(
             onValueChange = { message = it },
             modifier = Modifier
                 .weight(1f),
-//            placeholder = {
-////                if (message.isBlank()) {
-////                    Text(text = "Type input")
-////                }
-//            },
             trailingIcon = {
                 IconButton(onClick = {
                     message = ""
@@ -90,7 +83,10 @@ fun ChatInput(
                         contentDescription = "send icon"
                     )
                 }
-            }
+            },
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = Color.Transparent
+            )
         )
     }
 }
