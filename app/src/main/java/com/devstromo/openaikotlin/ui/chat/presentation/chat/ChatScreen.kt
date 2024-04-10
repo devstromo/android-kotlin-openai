@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.devstromo.openaikotlin.R
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
+import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
 @Composable
 fun ChatScreen(
@@ -86,7 +87,10 @@ fun ChatInput(
                 }
             },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Color.Transparent
+                focusedBorderColor = Color.Transparent,
+                unfocusedBorderColor = Color.Transparent,
+                focusedContainerColor = kLightGrey,
+                unfocusedContainerColor = kLightGrey,
             ),
             shape = MaterialTheme.shapes.extraLarge
         )
