@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text.selection.TextSelectionColors
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -17,6 +19,7 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.devstromo.openaikotlin.R
@@ -62,6 +66,10 @@ fun ChatInput(
     var message by rememberSaveable { mutableStateOf("") }
 
     val keyboardController = LocalSoftwareKeyboardController.current
+    val customTextSelectionColors = TextSelectionColors(
+        handleColor = kDarkGrey,
+        backgroundColor = kDarkGrey.copy(alpha = .3f)
+    )
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -71,38 +79,43 @@ fun ChatInput(
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        OutlinedTextField(
-            value = message,
-            onValueChange = { message = it },
-            modifier = Modifier
-                .weight(1f),
-            trailingIcon = {
-                IconButton(onClick = {
-                    message = ""
-                    keyboardController?.hide()
-                }) {
-                    Icon(
-                        modifier = Modifier
-                            .size(20.dp),
-                        painter = painterResource(id = R.drawable.ic_send),
-                        contentDescription = "send icon"
-                    )
-                }
-            },
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Done
-            ),
-            colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = Color.Transparent,
-                unfocusedBorderColor = Color.Transparent,
-                focusedContainerColor = kLightGrey,
-                unfocusedContainerColor = kLightGrey,
-                cursorColor = kDarkGrey,
-                focusedTextColor = kDarkGrey,
+        CompositionLocalProvider(
+            LocalTextSelectionColors provides customTextSelectionColors
+        ) {
 
-            ),
-            shape = MaterialTheme.shapes.extraLarge
-        )
+            OutlinedTextField(
+                value = message,
+                onValueChange = { message = it },
+                modifier = Modifier
+                    .weight(1f),
+                trailingIcon = {
+                    IconButton(onClick = {
+                        message = ""
+                        keyboardController?.hide()
+                    }) {
+                        Icon(
+                            modifier = Modifier
+                                .size(20.dp),
+                            painter = painterResource(id = R.drawable.ic_send),
+                            contentDescription = "send icon"
+                        )
+                    }
+                },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done
+                ),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color.Transparent,
+                    unfocusedBorderColor = Color.Transparent,
+                    focusedContainerColor = kLightGrey,
+                    unfocusedContainerColor = kLightGrey,
+                    cursorColor = kDarkGrey,
+                    focusedTextColor = kDarkGrey,
+
+                    ),
+                shape = MaterialTheme.shapes.extraLarge
+            )
+        }
     }
 }
 
