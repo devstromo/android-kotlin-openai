@@ -30,6 +30,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.devstromo.openaikotlin.R
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
+import com.devstromo.openaikotlin.ui.theme.kDarkGrey
 import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
 @Composable
@@ -91,6 +92,9 @@ fun ChatInput(
                 unfocusedBorderColor = Color.Transparent,
                 focusedContainerColor = kLightGrey,
                 unfocusedContainerColor = kLightGrey,
+                cursorColor = kDarkGrey,
+                focusedTextColor = kDarkGrey,
+
             ),
             shape = MaterialTheme.shapes.extraLarge
         )
