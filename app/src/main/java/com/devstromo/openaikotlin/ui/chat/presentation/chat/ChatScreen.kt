@@ -102,7 +102,8 @@ fun ChatInput(
                     }
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Done
+                    imeAction = ImeAction.Done,
+                    keyboardType = KeyboardType.Password
                 ),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = Color.Transparent,
