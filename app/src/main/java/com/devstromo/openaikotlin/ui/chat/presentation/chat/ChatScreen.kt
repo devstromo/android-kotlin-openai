@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -88,6 +90,18 @@ fun ChatInput(
                 onValueChange = { message = it },
                 modifier = Modifier
                     .weight(1f),
+                leadingIcon = {
+                    IconButton(onClick = {
+
+                    }) {
+                        Icon(
+                            Icons.Default.Add,
+                            modifier = Modifier
+                                .size(20.dp),
+                            contentDescription = "send icon"
+                        )
+                    }
+                },
                 trailingIcon = {
                     IconButton(onClick = {
                         message = ""
