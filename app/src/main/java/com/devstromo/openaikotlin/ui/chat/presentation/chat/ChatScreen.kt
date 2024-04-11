@@ -44,14 +44,15 @@ import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
 @Composable
 fun ChatScreen(
-    modifier: Modifier = Modifier
+    state: ChatUiState
 ) {
     val prompt by remember {
         mutableStateOf("A brown fox on the ground")
     }
 
     Column(
-        modifier = modifier
+        modifier = Modifier
+            .fillMaxSize()
             .padding(10.dp)
     ) {
         Text(
@@ -147,7 +148,7 @@ fun ChatInput(
 private fun ChatScreenPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
-            modifier = Modifier.fillMaxSize()
+            state = ChatUiState()
         )
     }
 }

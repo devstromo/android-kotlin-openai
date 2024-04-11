@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.devstromo.openaikotlin.ui.chat.presentation.chat.ChatScreen
+import com.devstromo.openaikotlin.ui.chat.presentation.chat.ChatUiState
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     ChatScreen(
-                        modifier = Modifier.fillMaxSize()
+                       state = ChatUiState()
                     )
                 }
             }
@@ -35,6 +36,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppPreview() {
     OpenAiKotlinTheme {
-        ChatScreen()
+        ChatScreen(
+            ChatUiState()
+        )
     }
 }
