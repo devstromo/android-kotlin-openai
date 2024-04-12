@@ -47,7 +47,8 @@ import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
 @Composable
 fun ChatScreen(
-    state: ChatUiState
+    state: ChatUiState,
+    onSendMessage: (String) -> Unit
 ) {
     val prompt by remember {
         mutableStateOf("A brown fox on the ground")
@@ -83,14 +84,17 @@ fun ChatScreen(
                 }
             }
         }
-        ChatInput()
+        ChatInput(
+            onSendMessage = onSendMessage
+        )
     }
 
 }
 
 @Composable
 fun ChatInput(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onSendMessage: (String) -> Unit
 ) {
     var message by rememberSaveable { mutableStateOf("") }
 
@@ -131,6 +135,7 @@ fun ChatInput(
                 },
                 trailingIcon = {
                     IconButton(onClick = {
+                        onSendMessage(message)
                         message = ""
                         keyboardController?.hide()
                     }) {
@@ -166,7 +171,8 @@ fun ChatInput(
 private fun ChatScreenPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
-            state = ChatUiState()
+            state = ChatUiState(),
+            onSendMessage = { _ -> }
         )
     }
 }

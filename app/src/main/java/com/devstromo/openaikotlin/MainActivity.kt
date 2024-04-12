@@ -24,7 +24,11 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     ChatScreen(
-                       state = ChatUiState()
+                        state = ChatUiState(),
+                        onSendMessage = { message ->
+
+                        }
+
                     )
                 }
             }
@@ -37,7 +41,8 @@ class MainActivity : ComponentActivity() {
 fun AppPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
-            ChatUiState()
+            ChatUiState(),
+            onSendMessage = {}
         )
     }
 }
