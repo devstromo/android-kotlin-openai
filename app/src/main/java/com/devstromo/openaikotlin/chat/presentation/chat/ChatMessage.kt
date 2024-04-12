@@ -1,4 +1,4 @@
-package com.devstromo.openaikotlin.ui.chat.presentation.chat
+package com.devstromo.openaikotlin.chat.presentation.chat
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.devstromo.openaikotlin.ui.chat.data.GPTMessage
+import com.devstromo.openaikotlin.chat.data.GPTMessage
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 import com.devstromo.openaikotlin.ui.theme.kLightGrey
 

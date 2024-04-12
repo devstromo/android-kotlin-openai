@@ -1,11 +1,11 @@
-package com.devstromo.openaikotlin.ui.chat.domain
+package com.devstromo.openaikotlin.chat.domain
 
 import com.aallam.openai.api.image.ImageCreation
 import com.aallam.openai.api.image.ImageSize
 import com.aallam.openai.api.image.ImageURL
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.OpenAI
-import com.devstromo.openaikotlin.ui.chat.core.config.getOpenAiConfig
+import com.devstromo.openaikotlin.chat.core.config.getOpenAiConfig
 
 class ImageGeneration {
 

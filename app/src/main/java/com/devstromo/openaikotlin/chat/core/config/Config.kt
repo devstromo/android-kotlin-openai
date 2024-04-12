@@ -1,4 +1,4 @@
-package com.devstromo.openaikotlin.ui.chat.core.config
+package com.devstromo.openaikotlin.chat.core.config
 
 import com.aallam.openai.api.http.Timeout
 import com.aallam.openai.client.OpenAI

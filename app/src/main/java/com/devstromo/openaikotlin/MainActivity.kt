@@ -10,8 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.devstromo.openaikotlin.ui.chat.presentation.chat.ChatScreen
-import com.devstromo.openaikotlin.ui.chat.presentation.chat.ChatUiState
+import com.devstromo.openaikotlin.chat.presentation.chat.ChatScreen
+import com.devstromo.openaikotlin.chat.presentation.chat.ChatUiState
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 
 class MainActivity : ComponentActivity() {

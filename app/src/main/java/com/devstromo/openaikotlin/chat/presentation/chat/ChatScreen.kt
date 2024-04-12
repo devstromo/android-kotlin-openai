@@ -1,4 +1,4 @@
-package com.devstromo.openaikotlin.ui.chat.presentation.chat
+package com.devstromo.openaikotlin.chat.presentation.chat
 
 
 import androidx.compose.foundation.background
