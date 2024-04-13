@@ -1,4 +1,4 @@
-package com.devstromo.openaikotlin.ui
+package com.devstromo.openaikotlin
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
