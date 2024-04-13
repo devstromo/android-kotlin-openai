@@ -4,6 +4,6 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 
-//@HiltAndroidApp
-//class OpenAiApp : Application() {
-//}
+@HiltAndroidApp
+class OpenAiApp : Application() {
+}

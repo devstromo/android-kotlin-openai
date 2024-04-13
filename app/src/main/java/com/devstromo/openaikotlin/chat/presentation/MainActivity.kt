@@ -15,7 +15,7 @@ import com.devstromo.openaikotlin.chat.presentation.chat.ChatUiState
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
