@@ -1,4 +1,4 @@
-package com.devstromo.openaikotlin.chat.domain
+package com.devstromo.openaikotlin.chat.data
 
 import com.aallam.openai.api.image.ImageCreation
 import com.aallam.openai.api.image.ImageSize
