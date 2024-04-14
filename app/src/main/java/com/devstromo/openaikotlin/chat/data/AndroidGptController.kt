@@ -7,6 +7,7 @@ import com.aallam.openai.api.chat.ChatMessage
 import com.aallam.openai.api.chat.ChatRole
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.OpenAI
+import com.devstromo.openaikotlin.chat.core.config.Models.GTP_MODEL
 import com.devstromo.openaikotlin.chat.core.config.getOpenAiConfig
 import com.devstromo.openaikotlin.chat.domain.GptController
 
@@ -15,7 +16,7 @@ class AndroidGptController() : GptController {
 
     override suspend fun sendMessage(message: String) {
         val chatCompletionRequest = ChatCompletionRequest(
-            model = ModelId("gpt-3.5-turbo"),
+            model = ModelId(GTP_MODEL),
             messages = listOf(
                 ChatMessage(
                     role = ChatRole.System,

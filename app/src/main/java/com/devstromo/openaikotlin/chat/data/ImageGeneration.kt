@@ -5,6 +5,7 @@ import com.aallam.openai.api.image.ImageSize
 import com.aallam.openai.api.image.ImageURL
 import com.aallam.openai.api.model.ModelId
 import com.aallam.openai.client.OpenAI
+import com.devstromo.openaikotlin.chat.core.config.Models.IMAGE_MODEL
 import com.devstromo.openaikotlin.chat.core.config.getOpenAiConfig
 
 class ImageGeneration {
@@ -15,7 +16,7 @@ class ImageGeneration {
         return openAI.imageURL(
             creation = ImageCreation(
                 prompt = prompt,
-                model = ModelId("dall-e-3"),
+                model = ModelId(IMAGE_MODEL),
                 n = 1,
                 size = ImageSize.is1024x1024
             )
