@@ -18,7 +18,7 @@ import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
 @Composable
-fun ChatMessage(
+fun ChatMessageContainer(
     message: GPTMessage,
     modifier: Modifier = Modifier
 ) {
@@ -56,7 +56,7 @@ fun ChatMessage(
 @Composable
 fun ChatMessagePreview() {
     OpenAiKotlinTheme {
-        ChatMessage(
+        ChatMessageContainer(
             message = GPTMessage(
                 message = "Hello World",
                 false

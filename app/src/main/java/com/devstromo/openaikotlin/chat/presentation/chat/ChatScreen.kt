@@ -74,7 +74,7 @@ fun ChatScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                 ) {
-                    ChatMessage(
+                    ChatMessageContainer(
                         message = message,
                         modifier = Modifier
                             .align(
