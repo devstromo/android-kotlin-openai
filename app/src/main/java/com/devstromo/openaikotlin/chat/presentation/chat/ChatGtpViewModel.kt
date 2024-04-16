@@ -17,10 +17,10 @@ class ChatGtpViewModel @Inject constructor(
     private val _state = MutableStateFlow(ChatUiState())
     val state = _state.asStateFlow()
 
-    fun sendMessage(message: GPTMessage) {
+    fun sendMessage(message: String) {
         _state.update {
             it.copy(
-                messages = it.messages + message
+                messages = it.messages + GPTMessage(message, false)
             )
         }
     }
