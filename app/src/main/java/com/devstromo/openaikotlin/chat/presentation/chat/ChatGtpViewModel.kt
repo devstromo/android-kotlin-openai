@@ -1,12 +1,14 @@
 package com.devstromo.openaikotlin.chat.presentation.chat
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.devstromo.openaikotlin.chat.data.GPTMessage
 import com.devstromo.openaikotlin.chat.domain.GptController
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
@@ -18,10 +20,13 @@ class ChatGtpViewModel @Inject constructor(
     val state = _state.asStateFlow()
 
     fun sendMessage(message: String) {
-        _state.update {
-            it.copy(
-                messages = it.messages + GPTMessage(message, false)
-            )
+        viewModelScope.launch {
+            gptController.sendMessage(message)
+            _state.update {
+                it.copy(
+                    messages = it.messages + GPTMessage(message, false)
+                )
+            }
         }
     }
 }
