@@ -33,7 +33,7 @@ fun ChatMessageContainer(
                 )
             )
             .background(
-                if (message.isFromChatGTP) kLightGrey else Color.Blue
+                kLightGrey
             )
             .padding(16.dp)
     ) {
