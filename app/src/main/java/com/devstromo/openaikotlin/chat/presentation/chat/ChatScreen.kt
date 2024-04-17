@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
@@ -25,9 +26,9 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.ShapeDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -49,8 +50,10 @@ fun ChatScreen(
     state: ChatUiState,
     onSendMessage: (String) -> Unit
 ) {
-    val prompt by remember {
-        mutableStateOf("A brown fox on the ground")
+    val chatListState = rememberLazyListState()
+
+    LaunchedEffect(state.messages) {
+        chatListState.animateScrollToItem(chatListState.layoutInfo.totalItemsCount)
     }
 
     Column(
@@ -59,6 +62,7 @@ fun ChatScreen(
             .padding(10.dp)
     ) {
         LazyColumn(
+            state = chatListState,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
@@ -82,7 +86,7 @@ fun ChatScreen(
         }
         Row(
             modifier = Modifier
-                .padding(top= 10.dp)
+                .padding(top = 10.dp)
                 .background(color = Color.Transparent)
         ) {
             ChatInput(
