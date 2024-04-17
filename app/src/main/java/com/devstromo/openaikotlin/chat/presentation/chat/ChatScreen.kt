@@ -23,7 +23,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.ShapeDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
@@ -59,9 +58,6 @@ fun ChatScreen(
             .fillMaxSize()
             .padding(10.dp)
     ) {
-        Text(
-            text = "Image Prompt $prompt!",
-        )
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
