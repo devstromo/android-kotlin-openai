@@ -14,7 +14,7 @@ import com.devstromo.openaikotlin.chat.domain.GptController
 class AndroidGptController() : GptController {
     private val openAI: OpenAI by lazy { getOpenAiConfig() }
 
-    override suspend fun sendMessage(message: String) {
+    override suspend fun sendMessage(message: String): String {
         val chatCompletionRequest = ChatCompletionRequest(
             model = ModelId(GTP_MODEL),
             messages = listOf(
@@ -30,5 +30,6 @@ class AndroidGptController() : GptController {
         )
         val completion: ChatCompletion = openAI.chatCompletion(chatCompletionRequest)
         Log.i("Chat completion", " Completion message $completion")
+        return completion.choices[0].message.content ?: ""
     }
 }
