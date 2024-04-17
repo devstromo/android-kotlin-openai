@@ -80,9 +80,15 @@ fun ChatScreen(
                 }
             }
         }
-        ChatInput(
-            onSendMessage = onSendMessage
-        )
+        Row(
+            modifier = Modifier
+                .padding(top= 10.dp)
+                .background(color = Color.Transparent)
+        ) {
+            ChatInput(
+                onSendMessage = onSendMessage
+            )
+        }
     }
 
 }
