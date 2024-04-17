@@ -23,10 +23,15 @@ class ChatGtpViewModel @Inject constructor(
 
     fun sendMessage(message: String) {
         viewModelScope.launch {
+            _state.update {
+                it.copy(
+                    messages = it.messages + GPTMessage(message, false)
+                )
+            }
             val result = gptController.sendMessage(message)
             _state.update {
                 it.copy(
-                    messages = it.messages + GPTMessage(message, false) + GPTMessage(result, true)
+                    messages = it.messages + GPTMessage(result, true)
                 )
             }
         }
