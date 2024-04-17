@@ -16,17 +16,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChatGtpViewModel @Inject constructor(
-   @FakeController private val gptController: GptController
+    @FakeController private val gptController: GptController
 ) : ViewModel() {
     private val _state = MutableStateFlow(ChatUiState())
     val state = _state.asStateFlow()
 
     fun sendMessage(message: String) {
         viewModelScope.launch {
-            gptController.sendMessage(message)
+            val result = gptController.sendMessage(message)
             _state.update {
                 it.copy(
-                    messages = it.messages + GPTMessage(message, false)
+                    messages = it.messages + GPTMessage(message, false) + GPTMessage(result, true)
                 )
             }
         }
