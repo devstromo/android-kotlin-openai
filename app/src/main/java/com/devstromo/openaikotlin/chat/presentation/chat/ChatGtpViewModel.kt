@@ -2,6 +2,8 @@ package com.devstromo.openaikotlin.chat.presentation.chat
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.devstromo.openaikotlin.chat.core.AndroidController
+import com.devstromo.openaikotlin.chat.core.FakeController
 import com.devstromo.openaikotlin.chat.data.GPTMessage
 import com.devstromo.openaikotlin.chat.domain.GptController
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ChatGtpViewModel @Inject constructor(
-    private val gptController: GptController
+   @FakeController private val gptController: GptController
 ) : ViewModel() {
     private val _state = MutableStateFlow(ChatUiState())
     val state = _state.asStateFlow()
