@@ -12,6 +12,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devstromo.openaikotlin.chat.data.GPTMessage
@@ -27,10 +29,10 @@ fun ChatMessageContainer(
         modifier = modifier
             .clip(
                 RoundedCornerShape(
-                    topStart = if (message.isFromChatGTP) 15.dp else 0.dp,
+                    topStart = if (message.isFromChatGTP) 0.dp else 15.dp,
                     topEnd = 15.dp,
                     bottomStart = 15.dp,
-                    bottomEnd = if (message.isFromChatGTP) 0.dp else 15.dp,
+                    bottomEnd = if (message.isFromChatGTP) 15.dp else 0.dp,
                 )
             )
             .background(
@@ -56,14 +58,23 @@ fun ChatMessageContainer(
 
 @Preview
 @Composable
-fun ChatMessagePreview() {
+fun ChatMessagePreview(
+    @PreviewParameter(SampleGPTMessageProvider::class) chat: GPTMessage
+) {
     OpenAiKotlinTheme {
         ChatMessageContainer(
             message = GPTMessage(
-                message = "Hello World",
-                false
+                message = chat.message,
+                chat.isFromChatGTP
             )
         )
     }
 
+}
+
+class SampleGPTMessageProvider : PreviewParameterProvider<GPTMessage> {
+    override val values = sequenceOf(
+        GPTMessage("Hello World", false),
+        GPTMessage("Not for me 🙄", true)
+    )
 }
