@@ -74,7 +74,7 @@ fun ChatScreen(
                         message = message,
                         modifier = Modifier
                             .align(
-                                if (message.isFromChatGTP) Alignment.End else Alignment.Start
+                                if (message.isFromChatGTP) Alignment.Start else Alignment.End
                             )
                     )
                 }
