@@ -48,8 +48,7 @@ fun TypewriterText(
                     )
                 delay(45)
             }
-            textIndex = (textIndex + 1) % texts.size
-            delay(250)
+            textIndex += 1
         }
     }
 
