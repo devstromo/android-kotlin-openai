@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.devstromo.openaikotlin.chat.data.GPTMessage
+import com.devstromo.openaikotlin.chat.presentation.chat.components.TypewriterText
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 import com.devstromo.openaikotlin.ui.theme.kLightGrey
 
@@ -51,6 +52,17 @@ fun ChatMessageContainer(
             color = Color.Black,
             modifier = Modifier.widthIn(max = 250.dp)
         )
+        if (message.isFromChatGTP) {
+            TypewriterText(
+                texts = listOf(message.message)
+            )
+        } else {
+            Text(
+                text = message.message,
+                color = Color.Black,
+                modifier = Modifier.widthIn(max = 250.dp)
+            )
+        }
 
     }
 
