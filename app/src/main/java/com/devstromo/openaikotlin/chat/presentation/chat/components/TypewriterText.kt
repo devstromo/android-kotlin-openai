@@ -46,10 +46,10 @@ fun TypewriterText(
                     ).joinToString(
                         separator = "",
                     )
-                delay(160)
+                delay(45)
             }
             textIndex = (textIndex + 1) % texts.size
-            delay(1000)
+            delay(250)
         }
     }
 
