@@ -60,7 +60,6 @@ fun TypewriterText(
     )
 }
 
-@RequiresApi(Build.VERSION_CODES.N)
 fun String.splitToCodePoints(): List<String> {
     return codePoints()
         .toList()
