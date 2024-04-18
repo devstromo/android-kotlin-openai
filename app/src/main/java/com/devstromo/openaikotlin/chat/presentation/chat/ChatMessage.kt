@@ -47,11 +47,6 @@ fun ChatMessageContainer(
             fontSize = 10.sp,
             color = Color.Black
         )
-        Text(
-            text = message.message,
-            color = Color.Black,
-            modifier = Modifier.widthIn(max = 250.dp)
-        )
         if (message.isFromChatGTP) {
             TypewriterText(
                 texts = listOf(message.message)
