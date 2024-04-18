@@ -63,13 +63,14 @@ fun ChatScreen(
     ) {
         LazyColumn(
             state = chatListState,
+            reverseLayout = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(state.messages) { message ->
+            items(state.messages.reversed()) { message ->
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
