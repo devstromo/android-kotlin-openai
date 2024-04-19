@@ -170,6 +170,8 @@ fun ChatInput(
                     unfocusedContainerColor = kLightGrey,
                     cursorColor = kDarkGrey,
                     focusedTextColor = kDarkGrey,
+                    disabledContainerColor = kDarkGrey.copy(alpha = .2f),
+                    disabledBorderColor = Color.Transparent
                 ),
                 shape = MaterialTheme.shapes.extraLarge
             )
