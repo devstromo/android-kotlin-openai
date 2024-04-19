@@ -55,7 +55,7 @@ fun ChatScreen(
     LaunchedEffect(state.messages) {
         chatListState.animateScrollToItem(chatListState.layoutInfo.totalItemsCount)
     }
-
+    // TODO: Resolve list reversed from logic not here
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -91,7 +91,8 @@ fun ChatScreen(
                 .background(color = Color.Transparent)
         ) {
             ChatInput(
-                onSendMessage = onSendMessage
+                onSendMessage = onSendMessage,
+                state = state
             )
         }
     }
@@ -101,6 +102,7 @@ fun ChatScreen(
 @Composable
 fun ChatInput(
     modifier: Modifier = Modifier,
+    state: ChatUiState,
     onSendMessage: (String) -> Unit
 ) {
     var message by rememberSaveable { mutableStateOf("") }
