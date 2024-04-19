@@ -24,7 +24,8 @@ import com.devstromo.openaikotlin.ui.theme.kLightGrey
 @Composable
 fun ChatMessageContainer(
     message: GPTMessage,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onInputFinished: () -> Unit
 ) {
     Column(
         modifier = modifier
@@ -49,7 +50,8 @@ fun ChatMessageContainer(
         )
         if (message.isFromChatGTP) {
             TypewriterText(
-                texts = listOf(message.message)
+                texts = listOf(message.message),
+                onInputFinished = onInputFinished,
             )
         } else {
             Text(
@@ -73,7 +75,8 @@ fun ChatMessagePreview(
             message = GPTMessage(
                 message = chat.message,
                 chat.isFromChatGTP
-            )
+            ),
+            onInputFinished = {}
         )
     }
 

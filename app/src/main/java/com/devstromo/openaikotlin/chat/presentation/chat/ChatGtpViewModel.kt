@@ -31,9 +31,18 @@ class ChatGtpViewModel @Inject constructor(
             val result = gptController.sendMessage(message)
             _state.update {
                 it.copy(
+                    isReceivingResponse = true,
                     messages = it.messages + GPTMessage(result, true)
                 )
             }
+        }
+    }
+
+    fun onInputFinished() {
+        _state.update {
+            it.copy(
+                isReceivingResponse = false
+            )
         }
     }
 }

@@ -22,6 +22,7 @@ import kotlin.streams.toList
 @Composable
 fun TypewriterText(
     texts: List<String>,
+    onInputFinished: () -> Unit
 ) {
     var textIndex by remember {
         mutableIntStateOf(0)
@@ -50,6 +51,7 @@ fun TypewriterText(
             }
             textIndex += 1
         }
+        onInputFinished()
     }
 
     Text(

@@ -32,7 +32,8 @@ class MainActivity : ComponentActivity() {
                 ) {
                     ChatScreen(
                         state = state,
-                        onSendMessage = viewModel::sendMessage
+                        onSendMessage = viewModel::sendMessage,
+                        onInputFinished = viewModel::onInputFinished
                     )
                 }
             }
@@ -46,7 +47,8 @@ fun AppPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
             ChatUiState(),
-            onSendMessage = {}
+            onSendMessage = {},
+            onInputFinished = {}
         )
     }
 }

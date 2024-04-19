@@ -48,7 +48,8 @@ import com.devstromo.openaikotlin.ui.theme.kLightGrey
 @Composable
 fun ChatScreen(
     state: ChatUiState,
-    onSendMessage: (String) -> Unit
+    onSendMessage: (String) -> Unit,
+    onInputFinished: () -> Unit
 ) {
     val chatListState = rememberLazyListState()
 
@@ -80,7 +81,8 @@ fun ChatScreen(
                         modifier = Modifier
                             .align(
                                 if (message.isFromChatGTP) Alignment.Start else Alignment.End
-                            )
+                            ),
+                        onInputFinished = onInputFinished
                     )
                 }
             }
@@ -181,7 +183,8 @@ private fun ChatScreenPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
             state = ChatUiState(),
-            onSendMessage = { _ -> }
+            onSendMessage = { _ -> },
+            onInputFinished = {}
         )
     }
 }
@@ -194,7 +197,8 @@ private fun ChatInputDisablePreview() {
             state = ChatUiState(
                 isReceivingResponse = true
             ),
-            onSendMessage = { _ -> }
+            onSendMessage = { _ -> },
+            onInputFinished = {}
         )
     }
 }
