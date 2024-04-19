@@ -127,6 +127,7 @@ fun ChatInput(
 
             OutlinedTextField(
                 value = message,
+                enabled = !state.isReceivingResponse,
                 onValueChange = { message = it },
                 modifier = Modifier
                     .weight(1f),
@@ -167,8 +168,7 @@ fun ChatInput(
                     unfocusedContainerColor = kLightGrey,
                     cursorColor = kDarkGrey,
                     focusedTextColor = kDarkGrey,
-
-                    ),
+                ),
                 shape = MaterialTheme.shapes.extraLarge
             )
         }
@@ -181,6 +181,19 @@ private fun ChatScreenPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
             state = ChatUiState(),
+            onSendMessage = { _ -> }
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun ChatInputDisablePreview() {
+    OpenAiKotlinTheme {
+        ChatScreen(
+            state = ChatUiState(
+                isReceivingResponse = true
+            ),
             onSendMessage = { _ -> }
         )
     }
