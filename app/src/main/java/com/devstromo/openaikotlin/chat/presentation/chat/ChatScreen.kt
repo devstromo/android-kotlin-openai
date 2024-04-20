@@ -16,8 +16,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -44,6 +42,9 @@ import com.devstromo.openaikotlin.R
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 import com.devstromo.openaikotlin.ui.theme.kDarkGrey
 import com.devstromo.openaikotlin.ui.theme.kLightGrey
+import compose.icons.FontAwesomeIcons
+import compose.icons.fontawesomeicons.Regular
+import compose.icons.fontawesomeicons.regular.FileImage
 
 @Composable
 fun ChatScreen(
@@ -138,7 +139,7 @@ fun ChatInput(
 
                     }) {
                         Icon(
-                            Icons.Default.Add,
+                            FontAwesomeIcons.Regular.FileImage,
                             modifier = Modifier
                                 .size(20.dp),
                             contentDescription = "send icon"
