@@ -71,7 +71,7 @@ fun ChatScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            items(state.messages.reversed()) { message ->
+            items(state.messages) { message ->
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()

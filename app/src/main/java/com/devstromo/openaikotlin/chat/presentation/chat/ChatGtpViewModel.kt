@@ -2,7 +2,6 @@ package com.devstromo.openaikotlin.chat.presentation.chat
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.devstromo.openaikotlin.chat.core.AndroidController
 import com.devstromo.openaikotlin.chat.core.FakeController
 import com.devstromo.openaikotlin.chat.data.GPTMessage
 import com.devstromo.openaikotlin.chat.domain.GptController
