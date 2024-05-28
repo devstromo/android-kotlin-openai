@@ -23,7 +23,10 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            OpenAiKotlinTheme {
+            OpenAiKotlinTheme(
+                dynamicColor = false,
+                darkTheme = false
+            ) {
                 val viewModel = hiltViewModel<ChatGtpViewModel>()
                 val state by viewModel.state.collectAsState()
                 Surface(
