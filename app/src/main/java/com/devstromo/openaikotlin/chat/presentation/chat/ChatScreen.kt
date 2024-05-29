@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
@@ -36,6 +38,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
@@ -117,36 +120,34 @@ fun ChatInput(
 
     val keyboardController = LocalSoftwareKeyboardController.current
     val customTextSelectionColors = TextSelectionColors(
-        handleColor = kDarkGrey,
-        backgroundColor = kDarkGrey.copy(alpha = .3f)
+        handleColor = Color.DarkGray,
+        backgroundColor = Color.DarkGray.copy(alpha = .3f)
     )
-    var selectImageUri by remember {
-        mutableStateOf<Uri?>(null)
-    }
+    var selectImageUri by remember { mutableStateOf<Uri?>(null) }
+
     val photoPickerLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.PickVisualMedia(),
-    ) {
-        selectImageUri = it
+        contract = ActivityResultContracts.PickVisualMedia()
+    ) { uri ->
+        selectImageUri = uri
     }
+
     Row(
         modifier = modifier
             .fillMaxWidth()
             .background(
                 color = Color.Transparent,
-                shape = ShapeDefaults.ExtraLarge
+                shape = RoundedCornerShape(16.dp)
             ),
         verticalAlignment = Alignment.CenterVertically
     ) {
         CompositionLocalProvider(
             LocalTextSelectionColors provides customTextSelectionColors
         ) {
-
             OutlinedTextField(
                 value = message,
                 enabled = !state.isReceivingResponse,
                 onValueChange = { message = it },
-                modifier = Modifier
-                    .weight(1f),
+                modifier = Modifier.weight(1f),
                 leadingIcon = {
                     IconButton(onClick = {
                         photoPickerLauncher.launch(
@@ -155,24 +156,31 @@ fun ChatInput(
                     }) {
                         Icon(
                             FontAwesomeIcons.Regular.FileImage,
-                            modifier = Modifier
-                                .size(20.dp),
-                            contentDescription = "send icon"
+                            contentDescription = "Pick image",
+                            modifier = Modifier.size(20.dp)
                         )
                     }
                 },
                 trailingIcon = {
-                    IconButton(onClick = {
-                        onSendMessage(message)
-                        message = ""
-                        keyboardController?.hide()
-                    }) {
-                        Icon(
-                            modifier = Modifier
-                                .size(20.dp),
-                            painter = painterResource(id = R.drawable.ic_send),
-                            contentDescription = "send icon"
-                        )
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(4.dp)
+                    ) {
+                        selectImageUri?.let { uri ->
+
+                        }
+                        IconButton(onClick = {
+                            onSendMessage(message)
+                            message = ""
+                            selectImageUri = null
+                            keyboardController?.hide()
+                        }) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_send),
+                                contentDescription = "Send message",
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                     }
                 },
                 keyboardOptions = KeyboardOptions.Default.copy(
