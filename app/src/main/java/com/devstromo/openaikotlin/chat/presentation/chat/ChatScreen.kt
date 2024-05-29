@@ -1,6 +1,10 @@
 package com.devstromo.openaikotlin.chat.presentation.chat
 
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -27,6 +31,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -115,6 +120,14 @@ fun ChatInput(
         handleColor = kDarkGrey,
         backgroundColor = kDarkGrey.copy(alpha = .3f)
     )
+    var selectImageUri by remember {
+        mutableStateOf<Uri?>(null)
+    }
+    val photoPickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+    ) {
+        selectImageUri = it
+    }
     Row(
         modifier = modifier
             .fillMaxWidth()
@@ -136,7 +149,9 @@ fun ChatInput(
                     .weight(1f),
                 leadingIcon = {
                     IconButton(onClick = {
-
+                        photoPickerLauncher.launch(
+                            PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                        )
                     }) {
                         Icon(
                             FontAwesomeIcons.Regular.FileImage,
