@@ -85,6 +85,7 @@ dependencies {
     implementation(libs.androidx.navigation.hilt.compile)
     implementation(libs.composeIcons.fontAwesome)
     implementation(libs.coil.kt)
+    implementation(libs.coil.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
