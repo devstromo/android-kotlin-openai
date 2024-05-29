@@ -40,12 +40,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.devstromo.openaikotlin.R
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
 import com.devstromo.openaikotlin.ui.theme.kDarkGrey
@@ -167,7 +169,14 @@ fun ChatInput(
                         horizontalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         selectImageUri?.let { uri ->
-
+                            AsyncImage(
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .clip(RoundedCornerShape(50.dp)),
+                                model = uri,
+                                contentDescription = null,
+                                contentScale = ContentScale.FillHeight
+                            )
                         }
                         IconButton(onClick = {
                             onSendMessage(message)
