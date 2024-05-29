@@ -174,8 +174,8 @@ fun ChatInput(
                                     .size(30.dp)
                                     .clip(RoundedCornerShape(50.dp)),
                                 model = uri,
-                                contentDescription = null,
-                                contentScale = ContentScale.FillHeight
+                                contentDescription = "Image loader",
+                                contentScale = ContentScale.FillBounds
                             )
                         }
                         IconButton(onClick = {
