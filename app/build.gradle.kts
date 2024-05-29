@@ -84,6 +84,7 @@ dependencies {
     ksp(libs.androidx.hilt.compiler)
     implementation(libs.androidx.navigation.hilt.compile)
     implementation(libs.composeIcons.fontAwesome)
+    implementation(libs.coil.kt)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

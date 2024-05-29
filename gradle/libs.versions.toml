@@ -15,6 +15,7 @@ hilt-version = "2.48"
 hiltCompiler = "1.2.0"
 hiltNavigationCompose = "1.2.0"
 composeIcons = "1.1.0"
+coilVersion = "2.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,6 +41,7 @@ hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", v
 androidx-hilt-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltCompiler" }
 androidx-navigation-hilt-compile = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 composeIcons-fontAwesome = { module = "br.com.devsrsouza.compose.icons:font-awesome", version.ref = "composeIcons" }
+coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coilVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
