@@ -1,5 +1,6 @@
 package com.devstromo.openaikotlin.chat.presentation.chat
 
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devstromo.openaikotlin.chat.core.FakeController
@@ -20,7 +21,7 @@ class ChatGtpViewModel @Inject constructor(
     private val _state = MutableStateFlow(ChatUiState())
     val state = _state.asStateFlow()
 
-    fun sendMessage(message: String) {
+    fun sendMessage(message: String, uri: Uri?) {
         viewModelScope.launch {
             _state.update {
                 it.copy(

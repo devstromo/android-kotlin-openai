@@ -59,7 +59,7 @@ import compose.icons.fontawesomeicons.regular.FileImage
 @Composable
 fun ChatScreen(
     state: ChatUiState,
-    onSendMessage: (String) -> Unit,
+    onSendMessage: (String, Uri?) -> Unit,
     onInputFinished: () -> Unit
 ) {
     val chatListState = rememberLazyListState()
@@ -117,7 +117,7 @@ fun ChatScreen(
 fun ChatInput(
     modifier: Modifier = Modifier,
     state: ChatUiState,
-    onSendMessage: (String) -> Unit
+    onSendMessage: (String, Uri?) -> Unit
 ) {
     var message by rememberSaveable { mutableStateOf("") }
 
@@ -180,7 +180,7 @@ fun ChatInput(
                             )
                         }
                         IconButton(onClick = {
-                            onSendMessage(message)
+                            onSendMessage(message, selectImageUri)
                             message = ""
                             selectImageUri = null
                             keyboardController?.hide()
@@ -219,7 +219,7 @@ private fun ChatScreenPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
             state = ChatUiState(),
-            onSendMessage = { _ -> },
+            onSendMessage = { _, _ -> },
             onInputFinished = {}
         )
     }
@@ -233,7 +233,7 @@ private fun ChatInputDisablePreview() {
             state = ChatUiState(
                 isReceivingResponse = true
             ),
-            onSendMessage = { _ -> },
+            onSendMessage = { _, _ -> },
             onInputFinished = {}
         )
     }

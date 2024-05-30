@@ -50,7 +50,7 @@ fun AppPreview() {
     OpenAiKotlinTheme {
         ChatScreen(
             ChatUiState(),
-            onSendMessage = {},
+            onSendMessage = { _, _ -> },
             onInputFinished = {}
         )
     }
