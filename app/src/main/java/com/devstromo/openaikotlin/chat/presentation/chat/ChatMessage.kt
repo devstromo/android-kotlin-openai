@@ -71,8 +71,9 @@ fun ChatMessagePreview(
     OpenAiKotlinTheme {
         ChatMessageContainer(
             message = GPTMessage(
+                id = "1",
                 message = chat.message,
-                chat.isFromChatGTP
+                chat.isFromChatGTP,
             ),
             onInputFinished = {}
         )
@@ -82,7 +83,7 @@ fun ChatMessagePreview(
 
 class SampleGPTMessageProvider : PreviewParameterProvider<GPTMessage> {
     override val values = sequenceOf(
-        GPTMessage("Hello World", false),
-        GPTMessage("Not for me 🙄", true)
+        GPTMessage("1", "Hello World", false),
+        GPTMessage("2", "Not for me 🙄", true)
     )
 }
