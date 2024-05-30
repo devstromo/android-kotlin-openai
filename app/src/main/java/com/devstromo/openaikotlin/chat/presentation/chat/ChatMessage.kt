@@ -60,9 +60,7 @@ fun ChatMessageContainer(
                 modifier = Modifier.widthIn(max = 250.dp)
             )
         }
-
     }
-
 }
 
 @Preview
