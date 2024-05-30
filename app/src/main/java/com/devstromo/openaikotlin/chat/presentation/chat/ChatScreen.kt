@@ -65,9 +65,11 @@ fun ChatScreen(
     val chatListState = rememberLazyListState()
 
     LaunchedEffect(state.messages) {
-        chatListState.animateScrollToItem(chatListState.layoutInfo.totalItemsCount)
+        if (state.messages.isNotEmpty()) {
+            chatListState.animateScrollToItem(state.messages.size - 1)
+        }
     }
-    // TODO: Resolve list reversed from logic not here
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -75,7 +77,6 @@ fun ChatScreen(
     ) {
         LazyColumn(
             state = chatListState,
-            reverseLayout = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f),
@@ -109,8 +110,8 @@ fun ChatScreen(
             )
         }
     }
-
 }
+
 
 @Composable
 fun ChatInput(
