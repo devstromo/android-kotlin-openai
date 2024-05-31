@@ -3,6 +3,7 @@ package com.devstromo.openaikotlin.chat.presentation.chat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -10,12 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.devstromo.openaikotlin.chat.data.GPTMessage
 import com.devstromo.openaikotlin.chat.presentation.chat.components.TypewriterText
 import com.devstromo.openaikotlin.ui.theme.OpenAiKotlinTheme
@@ -37,9 +40,7 @@ fun ChatMessageContainer(
                     bottomEnd = if (message.isFromChatGTP) 15.dp else 0.dp,
                 )
             )
-            .background(
-                kLightGrey
-            )
+            .background(kLightGrey)
             .padding(16.dp)
     ) {
         Text(
@@ -48,17 +49,30 @@ fun ChatMessageContainer(
             fontSize = 10.sp,
             color = Color.Black
         )
-        if (message.isFromChatGTP) {
-            TypewriterText(
-                texts = listOf(message.message),
-                onInputFinished = onInputFinished,
+        if (message.uri != null) {
+            AsyncImage(
+                modifier = Modifier
+                    .size(500.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .padding(bottom = if (message.message.isNotEmpty()) 8.dp else 0.dp),
+                model = message.uri,
+                contentDescription = "Selected image thumbnail",
+                contentScale = ContentScale.FillBounds
             )
-        } else {
-            Text(
-                text = message.message,
-                color = Color.Black,
-                modifier = Modifier.widthIn(max = 250.dp)
-            )
+        }
+        if (message.uri == null || message.message.isNotEmpty()) {
+            if (message.isFromChatGTP) {
+                TypewriterText(
+                    texts = listOf(message.message),
+                    onInputFinished = onInputFinished,
+                )
+            } else {
+                Text(
+                    text = message.message,
+                    color = Color.Black,
+                    modifier = Modifier.widthIn(max = 250.dp)
+                )
+            }
         }
     }
 }
