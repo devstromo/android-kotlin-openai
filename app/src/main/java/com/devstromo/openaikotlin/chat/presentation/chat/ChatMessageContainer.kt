@@ -52,8 +52,8 @@ fun ChatMessageContainer(
         if (message.uri != null) {
             AsyncImage(
                 modifier = Modifier
-                    .size(500.dp)
-                    .clip(RoundedCornerShape(8.dp))
+                    .size(if (message.message.isNotEmpty()) 30.dp else 100.dp)
+                    .clip(RoundedCornerShape(if (message.message.isNotEmpty()) 0.dp else 8.dp))
                     .padding(bottom = if (message.message.isNotEmpty()) 8.dp else 0.dp),
                 model = message.uri,
                 contentDescription = "Selected image thumbnail",
